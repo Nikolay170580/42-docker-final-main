@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: ${{ github.repository_owner }}/42-docker-final  
+  IMAGE_NAME: nikola170580/42-docker-final  
   GO_VERSION: "1.22"
 
 jobs:

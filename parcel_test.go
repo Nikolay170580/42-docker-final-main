@@ -38,7 +38,20 @@ func TestAddGetDelete(t *testing.T) {
 	defer db.Close()
 	store := NewParcelStore(db)
 	parcel := getTestParcel()
-
+	
+// Создаём таблицу
+	_, err = db.Exec(`CREATE TABLE parcel (
+		number INTEGER PRIMARY KEY AUTOINCREMENT,
+		client INTEGER NOT NULL,
+		status TEXT NOT NULL,
+		address TEXT NOT NULL,
+		created_at TEXT NOT NULL
+	)`)
+	require.NoError(t, err)
+	
+	store := NewParcelStore(db)
+	parcel := getTestParcel()
+	
 	// add
 	parcel.Number, err = store.Add(parcel)
 
